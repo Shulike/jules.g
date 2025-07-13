@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Assistant</title>
+</head>
+<body>
+    <h1>Create Assistant</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Assistant Details</h2>
+        {{ assistant_form.as_p }}
+        <h2>Knowledge Source</h2>
+        {{ knowledge_form.as_p }}
+        <button type="submit">Create Assistant</button>
+    </form>
+</body>
+</html>

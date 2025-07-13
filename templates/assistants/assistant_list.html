@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Assistants</title>
+</head>
+<body>
+    <h1>My Assistants</h1>
+    <a href="{% url 'create_assistant' %}">Create New Assistant</a>
+    <ul>
+        {% for assistant in assistants %}
+            <li>{{ assistant.name }}</li>
+        {% empty %}
+            <li>You have no assistants yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
