@@ -3,6 +3,7 @@ from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Assistant
 from .forms import AssistantForm, KnowledgeSourceForm
+from .tasks import process_knowledge_source
 
 class AssistantListView(LoginRequiredMixin, ListView):
     model = Assistant
@@ -23,6 +24,7 @@ def create_assistant(request):
             knowledge = knowledge_form.save(commit=False)
             knowledge.assistant = assistant
             knowledge.save()
+            process_knowledge_source.delay(knowledge.id)
             return redirect('assistant_list')
     else:
         assistant_form = AssistantForm()

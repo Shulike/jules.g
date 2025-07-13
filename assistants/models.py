@@ -16,6 +16,7 @@ class KnowledgeSource(models.Model):
     source_type = models.CharField(max_length=10, choices=[('file', 'File'), ('url', 'URL')])
     file = models.FileField(upload_to='knowledge_files/', blank=True, null=True)
     url = models.URLField(blank=True, null=True)
+    processed_text = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

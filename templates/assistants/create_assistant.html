@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Assistant</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}Create Assistant{% endblock %}
+
+{% block content %}
     <h1>Create Assistant</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2>Assistant Details</h2>
-        {{ assistant_form.as_p }}
-        <h2>Knowledge Source</h2>
-        {{ knowledge_form.as_p }}
-        <button type="submit">Create Assistant</button>
+        <div class="card mb-3">
+            <div class="card-header">Assistant Details</div>
+            <div class="card-body">
+                {{ assistant_form.as_p }}
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">Knowledge Source</div>
+            <div class="card-body">
+                {{ knowledge_form.as_p }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Create Assistant</button>
     </form>
-</body>
-</html>
+{% endblock %}

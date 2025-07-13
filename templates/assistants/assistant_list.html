@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Assistants</title>
-</head>
-<body>
-    <h1>My Assistants</h1>
-    <a href="{% url 'create_assistant' %}">Create New Assistant</a>
-    <ul>
+{% extends 'base.html' %}
+
+{% block title %}My Assistants{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>My Assistants</h1>
+        <a href="{% url 'create_assistant' %}" class="btn btn-primary">Create New Assistant</a>
+    </div>
+    <div class="list-group">
         {% for assistant in assistants %}
-            <li>{{ assistant.name }}</li>
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ assistant.name }}</h5>
+                    <small>{{ assistant.created_at|date:"Y-m-d" }}</small>
+                </div>
+                <p class="mb-1">{{ assistant.description|default:"No description" }}</p>
+            </a>
         {% empty %}
-            <li>You have no assistants yet.</li>
+            <div class="alert alert-info" role="alert">
+                You have no assistants yet.
+            </div>
         {% endfor %}
-    </ul>
-</body>
-</html>
+    </div>
+{% endblock %}
