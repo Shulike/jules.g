@@ -9,7 +9,7 @@
     </div>
     <div class="list-group">
         {% for assistant in assistants %}
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="{% url 'chat' assistant.id %}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">{{ assistant.name }}</h5>
                     <small>{{ assistant.created_at|date:"Y-m-d" }}</small>
